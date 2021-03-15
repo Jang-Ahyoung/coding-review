@@ -1,5 +1,7 @@
+from collections import deque
 def solution(scoville, K):
     scoville.sort()
+    scoville = deque(scoville)
     returnValue = 0
 
     while(True):
@@ -8,10 +10,13 @@ def solution(scoville, K):
                 returnValue = -1
                 break
             else:
-                first = scoville.pop(0)
-                second = scoville.pop(0)
+                first = scoville.popleft()
+                second = scoville.popleft()
                 scoville.append(first + (second * 2))
                 returnValue += 1
+                scoville = list(scoville)
                 scoville.sort()
+                scoville = deque(scoville)
+                
         else: break
     return returnValue
