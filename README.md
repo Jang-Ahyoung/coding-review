@@ -5,7 +5,6 @@
 - [장아영](https://github.com/Jang-Ahyoung)
 
 ## 🏅 사용 언어
-- Java
 - Python
 - JavaScript
 
