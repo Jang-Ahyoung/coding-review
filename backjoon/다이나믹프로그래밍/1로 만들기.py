@@ -15,6 +15,23 @@ for i in range(2,x+1):
 print(d[x])
 
 
+# 짧은 풀이 - 60ms
+info = {1: 0, 2: 1}
+
+def find(n):
+    if n in info:
+        return info[n]
+    
+    m = 1 + min(find(n // 2) + n % 2, find(n // 3) + n % 3)
+    info[n] = m
+    return m
+
+N = int(input())
+print(find(N))
+
+
+
+
 # 길게 풀이
 
 import sys
