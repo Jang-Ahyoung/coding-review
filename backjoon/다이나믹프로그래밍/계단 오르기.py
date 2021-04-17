@@ -1,3 +1,18 @@
+from sys import stdin
+
+a,b,c = 0,0,0
+
+n = int(stdin.readline())
+for _ in range(n):
+    stair = int(stdin.readline())
+    d_0,d_1,d_2 = max(b,c), a+stair, b+stair
+    a,b,c = d_0,d_1,d_2
+
+print(max(d_2,d_1))
+
+
+
+#런타임 에러
 import sys 
 input = sys.stdin.readline 
 arr = [] 
