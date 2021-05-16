@@ -31,16 +31,17 @@ const solution = (answers) => {
     for (student of students) { // 학생배열 속 값을 돌며
         answer.push(
             answers.reduce((acc, cur, idx) => { // ( cur==student[idx % student.length] ? acc++ : acc, acc),0))
-                // 정답과 학생의 답이 일치할 경우 -> 누적값 acc +1 해주고 아닐경우 현재값 = 0
+                // 정답과 학생의 답이 일치할 경우 -> acc값에 +1 해주고 아닐경우 그대로 acc
                 cur == student[idx % student.length] ? acc++ : acc;
                 return acc;
             }, 0));
     }
     return answer.reduce((acc, cur, idx) => (
+        // answer 배열에 저장된 값 돌며 -> 현재값이 최대값일 경우 acc
         cur === Math.max(...answer)
-            ? acc.push(idx + 1)
+            ? acc.push(idx + 1) // acc의 값을 배열 값 갱신해줘
             : acc, acc)
-        , [])
+        , []) // 누적의 초깃값을 []로 설정!
 }
 
 solution([1, 2, 3, 4, 5])
