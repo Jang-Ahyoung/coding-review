@@ -7,7 +7,6 @@ function solution(numbers) {
         for (let j = i + 1; j < numbers.length; j++) {
             const sum = numbers[i] + numbers[j]
             if (result.indexOf(sum) < 0) result.push(sum)
-            // if (!result.includes(sum)) result.push(sum);
         }
     }
 
