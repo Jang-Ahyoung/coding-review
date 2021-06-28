@@ -5,12 +5,14 @@ function solution(numbers, target) {
     recur(0, 0);
     return answer;
 
+    // 재귀함수 형태의 DFS 구현
     function recur(count, sum) {
-        if (count == numbers.length) { // 리프 노드 도착 시 모드 ㄴnumbers 탐색
-            if (sum == target) answer += 1; // 주어진 조건에 만족하면 answer++
+        if (count == numbers.length) { // numbers의 모든 수를 연산하고
+            if (sum == target) answer += 1; // target과 같은 합이 나오면 answer증가
             return;
         }
-        recur(count + 1, sum + numbers[count]); // 주어진 조건에 만족하면 answer++
+        // + , - 연산 모두 수행
+        recur(count + 1, sum + numbers[count]);
         recur(count + 1, sum - numbers[count]); // right child 는 -일 경우
     }
 }
