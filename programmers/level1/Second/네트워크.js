@@ -23,3 +23,26 @@ function solution(n, computers) {
     }
     return answer;
 }
+
+
+// dfs 활용 풀이
+function solution(n, computers) {
+    let answer = 0;
+    let visited = Array(n).fill(false);
+    for (let i = 0; i < n; i++) {
+        if (!visited[i]) {
+            dfs(i);
+            answer++;
+        }
+    }
+
+    function dfs(start) {
+        visited[start] = true;
+        for (let i = 0; i < n; i++) {
+            if (start !== i && computers[start][i] === 1 && !visited[i]) {
+                dfs(i);
+            }
+        }
+    }
+    return answer;
+}
