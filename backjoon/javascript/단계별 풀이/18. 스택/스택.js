@@ -3,8 +3,8 @@
 let fs = require('fs');
 let input = fs.readFileSync('/dev/stdin').toString().split('\n');
 
-const testCnt = Number(input[0]);
-const commandList = input.slice(1, input.length);
+const testCnt = + input.shift();
+const commandList = input;
 
 const stack = [];
 let result = '';
@@ -32,7 +32,7 @@ for (let i = 0; i < testCnt; i++) {
             break;
     }
 }
-console.log(result.slice(0, result.length - 1));
+console.log(result.slice(0, result.length - 1)); // 마지막 /n을 없애주어야해! -> slice의 경우 배열이면 한요소를, 문자열의 경우 한글자씩 선택된다.
 
 // 2. class 이용
 class Node {
