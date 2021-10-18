@@ -49,3 +49,50 @@ function RangeCheck(i, j) {
     else return false;
 }
 solution();
+
+
+
+
+// 풀이 2. bfs 활용
+let input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
+
+let N = input.shift();
+let graph = [];
+for (let i = 0; i < N; i++) {
+    graph[i] = input[i].split('');
+}
+let visit = [...graph];
+let queue = [];
+let number = [];
+for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+        if (graph[i][j] === "1" && visit[i][j] !== true) { // 방문해야될 노드 삽입
+            visit[i][j] = true;
+            queue.push({ i: i, j: j });
+            number.push(bfs());
+        }
+    }
+}
+
+function bfs() {
+    let di = [1, -1, 0, 0];
+    let dj = [0, 0, -1, 1];
+    let cnt = 1;
+    while (queue.length !== 0) {
+        const now = queue.shift();
+        for (let d = 0; d < 4; d++) { // 상하좌우를 다 살펴주는 bfs
+            let ni = now.i + di[d];
+            let nj = now.j + dj[d];
+            if (ni >= 0 && ni < N && nj >= 0 && nj < N && visit[ni][nj] !== true && visit[ni][nj] === "1") {
+                cnt++;
+                queue.push({ i: ni, j: nj });
+                visit[ni][nj] = true;
+            }
+        }
+    }
+    return cnt;
+}
+
+number.sort((a, b) => a - b);
+console.log(number.length);
+console.log(number.join("\n"));
