@@ -10,7 +10,7 @@ const dy = [0, 0, 1, -1];
 let result = 0;
 for (let i = 0; i < testCase; i++) {
     const [m, n, k] = input.shift().split(' ').map((num) => + num);
-    let graph = new Array(m).fill(null).map((element) => new Array(n).fill(0));
+    let graph = new Array(m).fill(null).map((element) => new Array(n).fill(0)); // let graph = new Array(m).fill(new Array(n).fill(0)); // 이렇게 하면 오류나! 배열 생성 잘 점검해주기
     for (let i = 0; i < k; i++) {
         const [a, b] = input.shift().split(' ');
         graph[a][b] = 1;

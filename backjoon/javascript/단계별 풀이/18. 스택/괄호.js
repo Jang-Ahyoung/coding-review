@@ -7,7 +7,7 @@ let result = '';
 
 for (let i = 0; i < len; i++) {
     let inputStr = input[i];
-    while (inputStr.indexOf("()") >= 0) {
+    while (inputStr.indexOf("()") >= 0) { // 조건 충족 시 수행
         inputStr = inputStr.replace("()", "");
     }
 

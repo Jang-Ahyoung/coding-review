@@ -1,5 +1,5 @@
 // 그래프 탐색 결과를 각 DFS와 BFS로 출력
-
+// 정점의 개수 N, 간선의 개수 M, 탐색을 시작할 정점의 번호 V
 const input = require("fs").readFileSync('/dev/stdin').toString().split('\n');
 const [n, m, v] = input.shift().split(" ").map((v) => parseInt(v));
 
