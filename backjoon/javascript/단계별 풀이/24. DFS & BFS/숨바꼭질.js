@@ -11,8 +11,7 @@ function solution() {
     while (queue.length) {
         const x = queue[cnt++]; // queue.shift() 보다 훨씬 빨라, 큐 순서대로 돌고 head 숫자 키워줘
         for (let nx of [x + 1, x - 1, x * 2]) { // 현재 위치의 -1, +1, *2 해당하는 위치를 반복문으로 돌아줘
-            if (position[nx] > 0 || nx < 0 || nx > 100001) continue;
-            else {
+            if (0 <= nx < 100001 && position[nx] === 0) { // 다음 nx가 정상 범위에 속하고 처음 접근하는 경우(배열 값 = 0)이면
                 position[nx] = position[x] + 1;
                 if (nx === end) return position[nx];
                 else queue.push(nx);
@@ -21,25 +20,6 @@ function solution() {
     }
 }
 console.log(solution());
-
-// 풀이 1.
-const [start, end] = require("fs").readFileSync("/dev/stdin").toString().split(" ").map((num) => + num); // 수빈과 동생의 위치
-let positionArray = new Array(100001).fill(0);
-let queue = [start];
-
-while (queue.length > 0) {
-    let x = queue.shift();
-    if (x === end) {
-        console.log(positionArray[x]);
-        break;
-    }
-    for (let nx of [x + 1, x - 1, x * 2]) {
-        if (0 <= nx < 100001 && positionArray[nx] === 0) {
-            positionArray[nx] = positionArray[x] + 1;
-            queue.push(nx);
-        }
-    }
-}
 
 // for(let i in arr) 일때 i는 배열의 인덱스를 가져와 arr[i]를 통해 요소에 접근해야되고 // 0, 1, 2 .. 
 // for(let i of arr) 는 i를 통해 바로 요소에 접근이 가능하다. // 10, 20, 30 ..
