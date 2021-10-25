@@ -11,14 +11,14 @@ data.map((item, index) => {
     if (index === 0) return;
     const num = item.split(" ");
     for (let i = 0; i < num.length; i++) {
-        if (index === 1) number.push(parseInt(num[i]));
-        else expression.push(parseInt(num[i]));
+        if (index === 1) number.push(parseInt(num[i])); // 입력 수 배열
+        else expression.push(parseInt(num[i])); // 각 연산자 갯수 배열
     }
 });
 
 const len = number.length;
 function find(sum, index) {
-    if (index >= len) {
+    if (index == len) {
         if (max < sum) max = sum;
         if (min > sum) min = sum;
         return;
@@ -43,6 +43,6 @@ function find(sum, index) {
     }
 }
 
-find(number[0], 1);
+find(number[0], 1); // 첫 숫자와 
 console.log(max);
 console.log(min);
