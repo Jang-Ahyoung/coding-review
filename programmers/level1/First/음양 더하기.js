@@ -9,7 +9,11 @@ function solution(absolutes, signs) {
 
 // 풀이1.
 function solution(absolutes, signs) {
-    return absolutes.reduce((acc, val, i) => acc + (val * (signs[i] ? 1 : -1)), 0);
-    //return absolutes.reduce((acc, val, i) =>{return acc + (val * (signs[i] ? 1 : -1))},0);
+    return absolutes.reduce((acc, cur, index) => acc += (cur * (signs[index] ? 1 : -1)), 0);
 }
 
+function solution(absolutes, signs) {
+    absolutes = absolutes.map((num, index) => signs[index] ? num : - num);
+    const result = absolutes.reduce((acc, cur) => acc += cur, 0);
+    return result;
+}
